@@ -6,7 +6,8 @@
   background-color: #000c19;
 }
 
-html, body {
+html,
+body {
   padding: 0;
   margin: 0;
   height: 100%;
@@ -14,7 +15,7 @@ html, body {
   overflow: hidden;
 }
 
-.scroll-container{
+.scroll-container {
   height: 100vh;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
@@ -26,27 +27,38 @@ html, body {
   display: none;
 }
 
-.section{
+.section {
+  opacity: 0;
   scroll-snap-align: start;
   height: 100vh;
   width: 100%;
-  position: relative;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.section.visible {
+  opacity: 1;
+}
+
+.hero-section.fade-out {
+  opacity: 0;
 }
 
 .hero-section {
   position: relative;
-  overflow: hidden; 
+  overflow: hidden;
   z-index: 2;
 }
 
 /* header main */
 .header {
   background: transparent;
+  position: sticky;
   margin: 0 80px;
   padding: 20px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  backdrop-filter: blur(10px);
   z-index: 1000;
 }
 
@@ -56,6 +68,11 @@ html, body {
   font-weight: 900;
   color: #fff;
   cursor: pointer;
+}
+
+.name a {
+  text-decoration: none;
+  color: #fff;
 }
 
 .menu {
@@ -96,6 +113,16 @@ html, body {
   left: 0;
 }
 
+.navlink ul li a.active::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #dda853;
+  bottom: -5px;
+  left: 0;
+}
+
 .navlink ul a {
   color: #ffffff;
   background: transparent;
@@ -121,7 +148,7 @@ html, body {
 
 /* homepage */
 
-.floating-icons{
+.floating-icons {
   position: absolute;
   width: 100%;
   top: 0;
@@ -130,7 +157,12 @@ html, body {
   z-index: 3;
 }
 
-.ae, .pr, .capcut, .figma, .css, .html{
+.ae,
+.pr,
+.capcut,
+.figma,
+.css,
+.html {
   background: transparent;
   position: fixed;
   bottom: -100px;
@@ -139,100 +171,121 @@ html, body {
   height: auto;
 }
 
-.ae{
+.ae {
   left: 100px;
   rotate: -20deg;
   width: 100px;
-  animation: ae1 1.2s  forwards ease-out;
+  animation: ae1 1.2s forwards ease-out;
   animation-delay: 0.2s;
 }
 
-.pr{
+.pr {
   right: 400px;
   rotate: 20deg;
   width: 80px;
-  animation: pr1 1.2s  forwards ease-out;
+  animation: pr1 1.2s forwards ease-out;
   animation-delay: 0.2s;
 }
 
-.capcut{
+.capcut {
   left: 350px;
   rotate: 20deg;
   width: 80px;
-  animation: capcut1 1.2s  forwards ease-out;
+  animation: capcut1 1.2s forwards ease-out;
   animation-delay: 0.2s;
 }
 
-.figma{
+.figma {
   right: 200px;
   rotate: -30deg;
   width: 80px;
-  animation: figma1 1.2s  forwards ease-out;
+  animation: figma1 1.2s forwards ease-out;
   animation-delay: 0.2s;
 }
 
-.css{
+.css {
   right: 280px;
   rotate: 45deg;
   width: 110px;
-  animation: css1 1.2s  forwards ease-out;
+  animation: css1 1.2s forwards ease-out;
   animation-delay: 0.2s;
 }
 
-.html{
+.html {
   left: 280px;
   rotate: -45deg;
   width: 110px;
-  animation: html1 1.2s  forwards ease-out;
+  animation: html1 1.2s forwards ease-out;
   animation-delay: 0.2s;
 }
 
-
-
-@keyframes ae1{
-  to {
+@keyframes ae1 {
+  0% {
+    bottom: -100px;
+    opacity: 0;
+  }
+  100% {
     bottom: 500px;
     opacity: 1;
   }
 }
 
-@keyframes pr1{
-  to {
+@keyframes pr1 {
+  0% {
+    bottom: -100px;
+    opacity: 0;
+  }
+  100% {
     bottom: 460px;
     opacity: 1;
   }
 }
 
-@keyframes capcut1{
-  to {
+@keyframes capcut1 {
+  0% {
+    bottom: -100px;
+    opacity: 0;
+  }
+  100% {
     bottom: 200px;
     opacity: 1;
   }
 }
 
-@keyframes figma1{
-  to {
+@keyframes figma1 {
+  0% {
+    bottom: -100px;
+    opacity: 0;
+  }
+  100% {
     bottom: 600px;
     opacity: 1;
   }
 }
 
-@keyframes css1{
-  to {
+@keyframes css1 {
+  0% {
+    bottom: -100px;
+    opacity: 0;
+  }
+  100% {
     bottom: 150px;
     opacity: 1;
   }
 }
 
-@keyframes html1{
-  to {
+@keyframes html1 {
+  0% {
+    bottom: -100px;
+    opacity: 0;
+  }
+  100% {
     bottom: 650px;
     opacity: 1;
   }
 }
 
-
-.image1{
+.image1 {
   background: transparent;
   position: absolute;
   top: 60%;
@@ -242,7 +295,7 @@ html, body {
   z-index: 2;
 }
 
-#img1{
+#img1 {
   background: transparent;
   width: 1728px;
   object-fit: contain;
@@ -258,22 +311,22 @@ html, body {
   position: relative;
 }
 
-.image-overlay{
+.image-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 150px;
-  background: linear-gradient(to bottom, #000C19 80%, transparent);
+  background: linear-gradient(to bottom, #000c19 80%, transparent);
   z-index: 5;
 }
 
-.intro-text{
+.intro-text {
   background: transparent;
   margin-top: 25px;
 }
 
-.welcome{
+.welcome {
   background: transparent;
   font-size: 50px;
   font-weight: 300;
@@ -281,7 +334,7 @@ html, body {
   text-align: center;
 }
 
-.portfolio{
+.portfolio {
   background: transparent;
   font-size: 120px;
   font-weight: 900;
@@ -289,20 +342,20 @@ html, body {
   text-align: center;
 }
 
-.bg-gradient{
+.bg-gradient {
   width: 100vw;
   height: 100vh;
   background: radial-gradient(
     circle at 50% 100%,
-    #004FA6 0%,
-    #000C19 70%,
-    #000C19 100%
-    );
+    #004fa6 0%,
+    #000c19 70%,
+    #000c19 100%
+  );
   background-repeat: no-repeat;
   z-index: 0;
 }
 
-.scroll-down{
+.scroll-down {
   position: absolute;
   bottom: 130px;
   left: 50%;
@@ -311,7 +364,6 @@ html, body {
   animation: fadeMove 2s infinite;
   z-index: 100;
   background: transparent;
-
 }
 
 .scroll-down svg {
@@ -331,21 +383,34 @@ html, body {
 }
 
 @keyframes fadeMove {
-  0% { opacity: 1; transform: translate(-50%, 0); }
-  50% { opacity: 0.5; transform: translate(-50%, 10px); }
-  100% { opacity: 1; transform: translate(-50%, 0); }
+  0% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translate(-50%, 10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
 }
 
 @keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(6px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
 }
 
 /* next section */
 
-
-
 .next-section {
+  position: relative;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -354,17 +419,16 @@ html, body {
   overflow: hidden;
   background: radial-gradient(
     circle 400px at 75% center,
-    #004FA6 0%,
+    #004fa6 0%,
     #002f5e 50%,
-    #000C19 100%
+    #000c19 100%
   );
-
 }
 
 /* left side */
 .left-side-container {
   width: 50%;
-  margin-left: 80px; 
+  margin-left: 80px;
   margin-top: -200px;
   background: transparent;
 }
@@ -374,17 +438,15 @@ html, body {
   color: white;
   margin-bottom: 10px;
   background: transparent;
-
 }
 
 .harley-name {
   font-size: 133px;
   font-weight: 900;
-  color: #DDA853;
+  color: #dda853;
   margin-bottom: 10px;
   line-height: 1;
   background: transparent;
-
 }
 
 .role {
@@ -393,12 +455,10 @@ html, body {
   color: white;
   margin-bottom: 20px;
   background: transparent;
-
 }
 
-.paragraph-1{
+.paragraph-1 {
   background: transparent;
-
 }
 
 .paragraph-1 p {
@@ -407,7 +467,6 @@ html, body {
   line-height: 1.5;
   max-width: 90%;
   background: transparent;
-
 }
 
 .button-group {
@@ -415,10 +474,9 @@ html, body {
   gap: 20px;
   margin-top: 30px;
   background: transparent;
-
 }
 
-.button-see-more,
+.button-aboutme,
 .button-projects {
   padding: 12px 28px;
   font-size: 18px;
@@ -429,18 +487,18 @@ html, body {
   transition: all 0.3s ease;
 }
 
-.button-see-more {
-  background-color: #DDA853;
+.button-aboutme {
+  background-color: #dda853;
   color: white;
 }
 
 .button-projects {
   background-color: white;
-  color: #DDA853;
-  border: 2px solid #DDA853;
+  color: #dda853;
+  border: 2px solid #dda853;
 }
 
-.button-see-more:hover,
+.button-aboutme:hover,
 .button-projects:hover {
   transform: scale(1.05);
 }
@@ -451,4 +509,123 @@ html, body {
   display: flex;
   height: 100vh;
   overflow: hidden;
+}
+
+.image2 {
+  background: transparent;
+  position: absolute;
+  top: 60%;
+  right: 100px;
+  transform: translateY(-50%);
+  overflow: hidden;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navlink {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .left-side-container,
+  .right-side-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .image2 {
+    width: 100%;
+  }
+}
+
+.floating-button {
+  background: transparent;
+  position: fixed;
+  bottom: 20px;
+  right: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gmail-button {
+  background-color: #fff;
+  border-radius: 50%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+  margin-bottom: 10px;
+}
+
+.facebook-button {
+  background-color: #fff;
+  border-radius: 50%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+  margin-bottom: 10px;
+}
+
+.linkedin-button {
+  background-color: #fff;
+  border-radius: 50%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+  margin-bottom: 10px;
+}
+
+.gmail-button svg,
+.facebook-button svg,
+.linkedin-button svg {
+  background-color: transparent;
+  fill: #003764;
+  width: 35px;
+  height: 35px;
+  transition: transform 0.2s ease;
+}
+
+/* Hover effect */
+.facebook-button:hover {
+  background-color: #dda853;
+}
+
+.facebook-button:hover svg {
+  transform: scale(1.1);
+}
+
+.linkedin-button:hover {
+  background-color: #dda853;
+}
+
+.linkedin-button:hover svg {
+  transform: scale(1.1);
+}
+
+.gmail-button:hover {
+  background-color: #dda853;
+}
+
+.gmail-button:hover svg {
+  transform: scale(1.1);
 }
